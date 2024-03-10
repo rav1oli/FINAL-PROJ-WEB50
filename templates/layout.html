@@ -12,11 +12,7 @@
         <nav>
             <ul>
                 <li><a href="{% url 'index' %}">Maths Questions!</a></li> <!-- the name of the site title -->
-
-                <li><button>Problem Sets</button></li>
-                {% if user.is_authenticated %}
-                    <li><button>My problems</button></li>
-                {% endif %}
+                
                 <li><a href="{% url 'create_problem' %}">Create a problem</a></li>
 
                 {% if not user.is_authenticated %}

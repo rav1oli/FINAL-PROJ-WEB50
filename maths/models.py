@@ -1,9 +1,6 @@
 from django.db import models
-from django import forms
 from django.conf import settings
 from django.contrib.auth.models import User
-from rest_framework import serializers
-import json
 
 
 PROBLEMS_SORTABLE_BY = {"time_created", "-time_created", "-time_last_edited", "categories",} #possible ways to query
@@ -47,21 +44,6 @@ class ProblemSet(models.Model):
     def __str__(self):
         return self.title
     
-
-class ProblemSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Problem
-        fields = '__all__'
-
-
-class ProblemSetSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = ProblemSet
-        fields = '__all__'
-
-    problems = ProblemSerializer(many=True)
-
 
 
 

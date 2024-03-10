@@ -9,19 +9,15 @@ $(document).ready(function(){
 
 })
 
-function load_sets(public, order){
-
-    if (!(public === "public" || public === "my_sets")){
-        console.log("error, must query for a valid subgroup of problem sets");
-    }
+function load_sets(subset, order){
 
     $.ajax({
-        url: `sets/public/${order}`,
+        url: `sets/${subset}/${order}`,
         type: 'GET',
 
         success: function(response){
             console.log(JSON.stringify(response, 0, 2))
-            render_sets({'sets': response.sets}); /* in sets_script.js */
+            render_sets({'sets': response}); /* in sets_script.js */
         },
         error: function(){
             console.log("error");

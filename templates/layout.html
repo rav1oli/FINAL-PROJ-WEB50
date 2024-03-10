@@ -1,0 +1,34 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="{% static 'maths/styles.css' %}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://unpkg.com/mustache@latest"></script>
+        {% block script %}{% endblock %}
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li><a href="{% url 'index' %}">Maths Questions!</a></li> <!-- the name of the site title -->
+
+                <li><button>Problem Sets</button></li>
+                {% if user.is_authenticated %}
+                    <li><button>My problems</button></li>
+                {% endif %}
+                <li><a href="{% url 'create_problem' %}">Create a problem</a></li>
+
+                {% if not user.is_authenticated %}
+                    <li><a href="{% url 'login' %}">Login</a></li> 
+                    <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                {% else %}
+                    <li><a href="#">Signed in as <b>{{ user.username}}</b></a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% endif %}
+
+            </ul>
+        </nav>
+        {% block content %}{% endblock %}
+    </body>
+</html>

@@ -1,0 +1,17 @@
+<!-- # moustache templating -->
+<main class="problem-sets">
+        
+</main>
+
+{% verbatim %}
+<script id="sets-template" type="text/x-tmpl-mustache">
+    Hello! 
+    {{#sets}}
+        {{ title }}
+        {{#problems}}
+            <p>Question: {{question}}</p>
+            <p>Answer: {{answer}}</p>
+        {{/problems}}
+    {{/sets}}
+</script>
+{% endverbatim %}

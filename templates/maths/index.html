@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block script %}
+    <script src="{% static 'maths/index_script.js' %}"></script>
+    <script src="{% static 'maths/sets_script.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+    <button id="public-sets">Public Sets</button>
+    <button id="my-sets">My Sets</button>
+    <select name="order" id="order-selector">
+        <option value="-time_created">Newest</option>
+        <option value="time_created">Oldest</option>
+        <option value="-time_last_edited">Recently edited</option>
+        <option value="categories">By Category</option>
+    </select>
+    
+    {% include 'maths/sets.html' %}
+
+{% endblock %}
